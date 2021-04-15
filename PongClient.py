@@ -25,7 +25,8 @@ PADDLE_WIDTH, PADDLE_HEIGHT = PADDLE_SIZE
 PLAYERNUM = None
 
 PORT = 5050
-SERVER_IP = "YOUR_PONG_SERVER_IP_HERE" # run the command " socket.gethostbyname(socket.gethostname()) " on your server and paste that IP here
+with open('environ.json', 'r') as f:
+    SERVER_IP = json.load(f)['SERVER_IP'] # run the command " socket.gethostbyname(socket.gethostname()) " on your server and paste that IP here
 ADDR = (SERVER_IP, PORT)
 MSG_HEADER_SIZE = 64
 FORMAT = 'utf-8'
