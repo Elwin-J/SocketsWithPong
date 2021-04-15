@@ -6,6 +6,10 @@ import socket
 import json
 from time import sleep
 
+class Game:
+    def __init__(self):
+        pass
+
 def game_over(p2lost, p1lost):
     print("Game Over!")
     print('Winner: ', 'player 1' if p2lost else 'player 2')
