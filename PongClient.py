@@ -7,8 +7,38 @@ import json
 from time import sleep
 
 class Game:
-    def __init__(self):
-        pass
+    def __init__(self, SCREEN_SIZE=(800, 500), SERVER_IP=None, PORT=5050, MSG_HEADER_SIZE=64, FORMAT='utf-8', DISCONNECT_MSG='{ }', READY_MSG='ready', config):
+        # consts
+        self.SCREEN_SIZE = SCREEN_SIZE
+        self.SCREEN_WIDTH, self.SCREEN_HEIGHT = SCREEN_SIZE
+        self.SCREEN_CENTER_Y = SCREEN_HEIGHT//2
+
+        self.PADDLE_SIZE = (25, 110) # inferred from assets image
+        self.PADDLE_WIDTH, self.PADDLE_HEIGHT = PADDLE_SIZE
+
+        self.ball_velocity = config['ball_velocity']
+        self.ball_angle = config['ball_angle'] # ball vel angle in degrees
+
+        self.PLAYERNUM = config['your_playernum']
+
+        self.paddle1y = config['P1_y']
+        self.paddle2y = config['P2_y']
+        self.ballx = config['ball_x']
+        self.bally = config['ball_y']
+        self.is_game_over = config['game_over']
+
+        # network related consts
+        self.PORT = PORT
+        if not SERVER_IP:
+            with open('environ.json', 'r') as f:
+                self.SERVER_IP = json.load(f)['SERVER_IP'] # run the command " socket.gethostbyname(socket.gethostname()) " on your server and paste that IP here
+        else:
+            self.SERVER_IP = SERVER_IP
+        self.ADDR = (self.SERVER_IP, self.PORT)
+        self.MSG_HEADER_SIZE = MSG_HEADER_SIZE
+        self.FORMAT = FORMAT
+        self.DISCONNECT_MSG = DISCONNECT_MSG
+        self.READY_MSG = READY_MSG
 
 def game_over(p2lost, p1lost):
     print("Game Over!")
