@@ -12,3 +12,5 @@
 </ul>
 
 ### To install these libraries, type in: <code> pip install &lt; module-name &gt; </code>
+
+#### Note: Sometimes the client maybe unable to connect to the server due to firewall/other issues so firewall *may* need to be turned off on the server to play the game. Also make sure both players are on the same LAN for it to work correctly.
