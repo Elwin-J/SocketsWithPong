@@ -11,4 +11,4 @@
     
 </ul>
 
-### To install these libraries, type in: <b> pip install &lt; module-name &gt; </b>
+### To install these libraries, type in: <code> pip install &lt; module-name &gt; </code>
